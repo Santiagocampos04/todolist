@@ -4,18 +4,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose =require ("mongoose");
 const _=require("lodash");
+let config=require("./config.json");
 
 
-//correr en consola1: mongod,
-//       en consola2: mongo,
-//     node consola3: app.js 
 
-
-//es bueno  en mongo: db.lists.drop() para borrar las listas pre existentes!
-
-//MongoDB Atlas
-//pass:San35597243
-//user:admin-Sancb
 
 const app = express();
 
@@ -24,12 +16,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-//
-//mongodb://localhost:27017/todolistDB
-//mongodb+srv://admin-Sancb:<password>@cluster0-91afm.mongodb.net/test?retryWrites=true&w=majority
-//"reemplazar contraseña (San35597243)" y despues del"/" que DB.. en este caso todolistDB
 
-mongoose.connect("mongodb+srv://admin-Sancb:San35597243@cluster0-91afm.mongodb.net/todolistDB",
+//mongodb://localhost:27017/config.nameDB
+
+
+mongoose.connect("mongodb+srv://"+config.user+":"+config.pass+"@cluster0-91afm.mongodb.net/"+config.nameDB,
 {
   useNewUrlParser: true,
   useUnifiedTopology: true
