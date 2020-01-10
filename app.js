@@ -105,26 +105,15 @@ List.findOne({name:customListName},function(err,foundList){
       
       //show existing List
 res.render("list",{listTitle:foundList.name,newListItems:foundList.items});
-      
-
-
-
-    }
-    
   }
-
+   }
 });
 
-
-  
 })
 
 app.post("/", function(req, res){
-
-
  const itemName=req.body.newItem;
  const listName=req.body.list;
-
 const item= new Item ({name:itemName});
 
 if(listName==="Today"){
@@ -158,13 +147,8 @@ res.redirect("/"+listName);
       }
     })
   }
- 
   
 });
-
-
-
-
 
 app.get("/work", function(req,res){
   res.render("list", {listTitle: "Work List", newListItems: workItems});
@@ -178,8 +162,6 @@ let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
 };
-
-
 
 app.listen(port, function() {
   console.log("Server started Successfully");
